@@ -56,7 +56,7 @@ class HomeViewModel extends GetxController {
           lon1: double.parse("${StaticVars.currentLong}"),
           lat2: double.parse('${_homeModel[i].lat}'),
           lon2: double.parse("${_homeModel[i].long}")
-        ) < 0.05 && int.parse("${_homeModel[i].frequency}") > 3){
+        ) < 0.03 && int.parse("${_homeModel[i].frequency}") > 5){
           homeModelTemp = _homeModel[i];
           _homeModel.removeAt(i);
           _homeModel.insert(2, homeModelTemp);

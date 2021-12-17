@@ -216,7 +216,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     audioPlayer.dispose();
                   }
                   if(StaticVars.collection == "alphabet" || StaticVars.collection == "number"){
-
+                    XsProgressHud.hide();
                   }else{
                     controller.updateData(index,controller.categoryModel[index].frequency);
                   }
