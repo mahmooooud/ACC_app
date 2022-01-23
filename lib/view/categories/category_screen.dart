@@ -23,6 +23,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     print("duration ${duration}");
     audioPlayer.play();
   }
+
   @override
   void initState() {
     super.initState();

@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:acc_app/constants.dart';
@@ -40,26 +39,39 @@ class HomeViewModel extends GetxController {
               frequency: value[i].get('frequency'),
               soundEn: value[i].get('sound_en'),
               soundAr: value[i].get('sound_ar'),
+              distance: calculateDistance(
+                  lat1: double.parse("${StaticVars.currentLat}"),
+                  lon1: double.parse("${StaticVars.currentLong}"),
+                  lat2: value[i].get('lat') == ""? 0.0 : double.parse(value[i].get('lat')),
+                  lon2: value[i].get('long') == ""? 0.0 : double.parse(value[i].get('long'))
+              ).toString()
           ));
         _loading.value = false;
       }
+      _homeModel.sort((first,second) =>  double.parse(first.distance).compareTo(double.parse(second.distance)));
       homeModelClone = _homeModel;
-      checkDistance();
+      // checkDistance();
       update();
     });
   }
   var homeModelTemp;
   checkDistance(){
     for(int i = 0; i < _homeModel.length; i++){
+      print("Distance ${calculateDistance(
+          lat1: double.parse("${StaticVars.currentLat}"),
+          lon1: double.parse("${StaticVars.currentLong}"),
+          lat2: double.parse('${_homeModel[i].lat}'),
+          lon2: double.parse("${_homeModel[i].long}")
+      )} For ${_homeModel[i].name}\n");
         if(calculateDistance(
           lat1: double.parse("${StaticVars.currentLat}"),
           lon1: double.parse("${StaticVars.currentLong}"),
           lat2: double.parse('${_homeModel[i].lat}'),
           lon2: double.parse("${_homeModel[i].long}")
-        ) < 0.03 && int.parse("${_homeModel[i].frequency}") > 5){
-          homeModelTemp = _homeModel[i];
-          _homeModel.removeAt(i);
-          _homeModel.insert(2, homeModelTemp);
+       ) < 0.03 && int.parse("${_homeModel[i].frequency}") > 5){
+          // homeModelTemp = _homeModel[i];
+          // _homeModel.removeAt(i);
+          // _homeModel.insert(0, homeModelTemp);
         }
     }
     update();
@@ -69,9 +81,9 @@ class HomeViewModel extends GetxController {
 
     CollectionReference users = FirebaseFirestore.instance.collection('category');
     FirebaseFirestore.instance.collection('category').get().then((QuerySnapshot querySnapshot) {
-      print("querySnapshot ${querySnapshot.docs[index].id}");
-      print("querySnapshot ${StaticVars.currentLat}");
-      print("querySnapshot ${StaticVars.currentLong}");
+      // print("querySnapshot ${querySnapshot.docs[index].id}");
+      // print("querySnapshot ${StaticVars.currentLat}");
+      // print("querySnapshot ${StaticVars.currentLong}");
       users.doc(
           querySnapshot.docs[index].id).update(
           {'lat': "${StaticVars.currentLat}" , "long" : "${StaticVars.currentLong}",'frequency': "${int.parse(frequency) + 1}"}
@@ -112,7 +124,7 @@ class HomeViewModel extends GetxController {
             math.cos(lat2);
     var c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a));
 
-    print('distnace is :- ${earthRadiusKm * c}');
+    // print('distnace is :- ${earthRadiusKm * c}');
 
 
     return earthRadiusKm * c;

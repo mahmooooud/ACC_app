@@ -1,8 +1,8 @@
 
 class HomeModel {
-  String name = "", imageEn = "", lat = "", long = "", imageAr = "", frequency = "", soundAr = "", soundEn = "";
+  String name = "", imageEn = "", lat = "", long = "", imageAr = "", frequency = "", soundAr = "", soundEn = "",distance = "";
 
-  HomeModel({ this.name, this.imageEn, this.lat, this.long, this.imageAr,this.frequency,this.soundAr,this.soundEn});
+  HomeModel({ this.name, this.imageEn, this.lat, this.long, this.imageAr,this.frequency,this.soundAr,this.soundEn,this.distance});
 
   HomeModel.fromJson(Map<dynamic, dynamic> map){
     if (map == null) {
@@ -16,6 +16,7 @@ class HomeModel {
     frequency = map['frequency'];
     soundAr = map['sound_ar'];
     soundEn = map['sound_en'];
+    distance = "";
   }
 
   toJson() {
@@ -27,7 +28,8 @@ class HomeModel {
       'lat': lat,
       'frequency': frequency,
       'sound_ar': soundAr,
-      'sound_en': soundEn
+      'sound_en': soundEn,
+      "distance" : distance
     };
   }
 }
