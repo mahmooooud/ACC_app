@@ -57,8 +57,9 @@ class HomeScreen extends StatelessWidget {
               itemBuilder: (context,index){
                 return InkWell(
                   onTap: (){
+                    print("homeModel ${controller.homeModel[index].name}");
                     playRemoteFile(StaticVars.langSelected == 'ar'? controller.homeModel[index].soundAr : controller.homeModel[index].soundEn);
-                    controller.updateLocation(index,controller.homeModel[index].frequency);
+                    controller.updateLocation(controller.homeModel[index].name,controller.homeModel[index].frequency);
                     controller.updateCollection(controller.homeModel[index].name);
                     Get.to(() => CategoryScreen());
                   },

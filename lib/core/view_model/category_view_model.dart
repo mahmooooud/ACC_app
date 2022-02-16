@@ -12,7 +12,6 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:xs_progress_hud/xs_progress_hud.dart';
 class CategoryViewModel extends GetxController {
 
-
   String downloadImageURL = "";
   String downloadSoundURL = "";
 

@@ -1,5 +1,4 @@
 import 'package:acc_app/helper/binding.dart';
-import 'package:acc_app/translation.dart';
 import 'package:acc_app/view/auth/login_view.dart';
 import 'package:acc_app/view/landing_screen.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,6 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialBinding: Binding(),
-      translations: Translation(),
       locale: Locale('en'),
       fallbackLocale: Locale('en'),
       home: LoginView(),

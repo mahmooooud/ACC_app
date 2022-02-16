@@ -111,6 +111,7 @@ class AuthViewModel extends GetxController {
       userId: user.user.uid,
       email: user.user.email,
       name: name.isEmpty ? user.user.displayName : name,
+      categoryData: StaticVars.categoryLocation
     ));
   }
 }

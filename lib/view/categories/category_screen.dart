@@ -51,7 +51,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             },
           ),
           actions: [
-            StaticVars.collection == "alphabet" || StaticVars.collection == "number"? Container() : IconButton(
+             StaticVars.collection == "alphabet" || StaticVars.collection == "number"?Container() : IconButton(
                 onPressed: (){
                   Get.bottomSheet(
                       StatefulBuilder(

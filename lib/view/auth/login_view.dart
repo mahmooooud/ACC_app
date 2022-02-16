@@ -121,7 +121,7 @@ class _LoginViewState extends State<LoginView> {
                             }
                           },
                           decoration: InputDecoration(
-                            hintText: 'iamdavid@gmail.com',
+                            hintText: 'iamMaro@gmail.com',
                             hintStyle: TextStyle(
                               color: Colors.black,
                             ),
